@@ -52,3 +52,7 @@ AutomationPractice
 ├── test-output
 ├── pom.xml
 └── testng.xml
+=======
+# qa-automation-practice
+Automation practices
+>>>>>>> f0c219a7f248f5b3935b5fff0f08b67aa65ed895

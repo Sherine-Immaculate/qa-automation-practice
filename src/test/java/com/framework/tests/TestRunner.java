@@ -17,6 +17,7 @@ import org.testng.annotations.Test;
 
 import com.framework.base.BaseTest;
 import com.framework.listeners.TestListener;
+import com.framework.pages.CartPage;
 import com.framework.pages.LoginPage;
 import com.framework.pages.ProductsPage;
 
@@ -26,11 +27,13 @@ public class TestRunner extends BaseTest {
 	
 	@Test(dataProvider ="LoginData")
 	public void register_User(String Username,String emailAddress) {
-		 System.out.println("Running on thread: " + Thread.currentThread().getId());
+		
 		LoginPage lp=new LoginPage(getDriver());
 		ProductsPage pp=new ProductsPage(getDriver());
+		CartPage cp= new  CartPage(getDriver());
 		lp.userSignUp(Username, emailAddress);
 		pp.selectProduct_AddtoCart();
+		cp.yourCartPage();
 	}
 	
 	@DataProvider(name="LoginData",parallel = false)

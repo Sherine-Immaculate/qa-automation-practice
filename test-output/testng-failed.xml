@@ -5,7 +5,7 @@
     <classes>
       <class name="com.framework.tests.TestRunner">
         <methods>
-          <include name="register_User" invocation-numbers="1"/>
+          <include name="register_User" invocation-numbers="0 1"/>
           <include name="teardown"/>
           <include name="setup"/>
         </methods>

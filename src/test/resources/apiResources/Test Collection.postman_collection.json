@@ -1,0 +1,111 @@
+{
+  "info": {
+    "_postman_id": "b06460f6-4ea2-4bec-9ccf-b7761371930d",
+    "name": "Test Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58893706",
+    "_collection_link": "https://go.postman.co/collection/58893706-b06460f6-4ea2-4bec-9ccf-b7761371930d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": 121,\r\n  \"username\": \"{{username}}\",\r\n  \"firstName\": {{firstname}},\r\n  \"lastName\": {{lastname}},\r\n  \"email\": {{email}},\r\n  \"password\": {{password}},\r\n  \"phone\": {{phone}},\r\n  \"userStatus\": 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v2/user",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v2",
+            "user"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"User Logged in\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Assert the login session\", function () {\r\n    let json = pm.response.json(); \r\n    pm.expect(json.message).to.include(\"logged in user session\"); \r\n});        \r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user/login?username={{username}}&password={{password}}",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user",
+            "login"
+          ],
+          "query": [
+            {
+              "key": "username",
+              "value": "{{username}}"
+            },
+            {
+              "key": "password",
+              "value": "{{password}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    },
+    {
+      "key": "username",
+      "value": ""
+    },
+    {
+      "key": "firstname",
+      "value": ""
+    },
+    {
+      "key": "lastname",
+      "value": ""
+    },
+    {
+      "key": "email",
+      "value": ""
+    },
+    {
+      "key": "password",
+      "value": ""
+    },
+    {
+      "key": "phone",
+      "value": ""
+    }
+  ]
+}
